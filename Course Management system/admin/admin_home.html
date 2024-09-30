@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin_page</title>
+    <link rel="stylesheet" href="./stylefiles/admin_styles.css">
+    <link rel="stylesheet" href="./stylefiles/home.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h2>A - Z Coding Accadamy</h2>
+    </header>
+    <div class="main">
+        <div class="main-content">
+            <div class="content" id="homeContent">
+                <h1>Welcome Admin </h1>
+                <div class="home">
+
+                    <section id="studentCount" class="container">
+
+                        <h2>Total Students</h2>
+                        <div class="count" id="countStudents"></div>
+
+                        <div class="form-group">
+                            <button><a href="./admin.student.html">Veiw Details</a></button>
+                        </div>
+
+                    </section>
+                    <section id="courseCount" class="container">
+
+
+                        <h2>Total Courses</h2>
+                        <div class="count" id="countCourse"></div>
+
+                        <div class="form-group">
+                            <button><a href="./admin.student.html">Veiw Details</a></button>
+                        </div>
+
+                    </section>
+                    <section id="EnrollmetCount" class="container">
+                        <h2>Total Enrollmet</h2>
+                        <div class="count" id="enrollmetCourse"></div>
+
+                        <div class="form-group">
+                            <button><a href="./admin_report.html">Veiw Details</a></button>
+                        </div>
+
+                    </section>
+                    <!-- <div class="card">
+                        <p class="card-title">Total Students</p>
+                        <p class="small-desc" id="totalStudent">
+                            30
+                        </p>
+                        <div class="go-corner">
+                            <div class="go-arrow"><a href="./admin.student.html">→</a></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card-title">Total Courses</p>
+                        <p class="small-desc" id="totalCourses">
+                            30
+                        </p>
+                        <div class="go-corner">
+                            <div class="go-arrow" ><a href="./admin_course.html">→</a></div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="container add" id="container">
+                <div class="brand">
+                    <h3>ADMIN</h3>
+                    <a href="#" id="toggle" onclick="menuChage(this)"><i>
+                            <div class="menuicon"></div>
+                            <div class="menuicon"></div>
+                            <div class="menuicon"></div>
+                        </i></a>
+                </div>
+
+                <div class="navbar">
+                    <ul>
+                        <li><a href="./admin_home.html" id="home"><i><img class="icon"
+                                        src="./Assets/icons8-home-100 (1).png" alt=""></i><span>Home</span></a></li>
+                        <li><a href="./admin.student.html" id="nav-students"><i><img class="icon"
+                                        src="./Assets/icons8-notepad-user-100.png"
+                                        alt="icon"></i><span>Students</span></a>
+                        </li>
+                        <li><a href="./admin_course.html" id="nav-courses"><i><img src="./Assets/icons8-course-100.png"
+                                        alt="" class="icon"></i><span>Course</span></a></li>
+                        <li><a href="./admin_notification.html" id="nav-notifications"><i><img
+                                        src="./Assets/icons8-bell-64.png" alt=""
+                                        class="icon"></i><span>Notification</span></a></li>
+                        <li><a href="./admin_report.html" id="nav-reports"><i><img src="./Assets/icons8-report-100.png"
+                                        alt="" class="icon"></i><span>Reports</span></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scriptFiles/admin_home.js"></script>
+    <script src="./scriptFiles/home.js"></script>
+</body>
+
+</html>

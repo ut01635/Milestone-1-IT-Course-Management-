@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    
+    background-image: url('./background1.jpg');
+    backdrop-filter: blur(3px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.main-header {
+    background-color: rgba(90, 2, 2, 0.541);
+    backdrop-filter: blur(10px);
+    top: 0px;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Navigation Style */
+.menuicon1,.menuicon2,.menuicon3 {
+    width: 26px;
+    height: 4px;
+    background-color:#fff ;
+    margin: 6px 0px;
+}
+.container {
+    
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    height: 80vh;
+    margin-top: 65px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    align-items: center;
+    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: 1s;
+    background: rgba(114, 2, 2, 0.603);
+    box-shadow: 0px 20px 30px 15px rgba(9, 13, 61, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: sticky;
+}
+
+.container .brand {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    padding: 10px 10px;
+    margin: 10px 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .brand h3 {
+    font-weight: 400;
+    font-size: 26px;
+    color: #fff;
+}
+
+.container .brand a i {
+    color: #d3cfcf;
+    font-size: 30px;
+}
+
+.container .navbar {
+    display: flex;
+    width: 90%;
+    height: auto;
+    margin: 10px 0;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.container .navbar ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    margin-right: 15px;
+}
+
+.container .navbar ul li {
+    height: 40px;
+    width: 100%;
+    margin: 15px 10px;
+    
+}
+
+.container .navbar ul li a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    border-radius: 7px;
+    align-items: center;
+    justify-content: left;
+
+}
+.icon{
+    width: 2rem;
+}
+
+.add .navbar:nth-child(4) {
+    margin: 0;
+}
+
+.container .navbar ul li a {
+    color: #fff;
+}
+
+.container .navbar ul li a span {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.container .navbar ul li a i {
+    display: flex;
+    font-size: 20px;
+    margin: 0 15px;
+}
+
+.container .navbar ul li a:hover,
+.container .navbar ul li a:hover span,
+.container .navbar ul li a:hover i {
+    background: rgb(78, 1, 1);
+    backdrop-filter: blur(75px);
+    /* color: #000; */
+    transition: 0.5s all;
+
+}
+
+.container .navbar ul li a:hover {
+    box-shadow: 0 3px 3px #4d3535;
+    transition: 0.5s all;
+}
+
+.container.active {
+    width: 70px;
+}
+
+.container.active .brand {
+    justify-content: center;
+}
+
+.container.active .navbar ul {
+    width: 90%;
+}
+
+.container.active .user {
+    width: 80%;
+    height: 100%;
+}
+
+.container.active .navbar ul li a {
+    justify-content: center;
+}
+
+.container.active .brand .logo,
+.container.active .brand h3,
+.container.active .navbar ul li a span,
+.container.active .user .name {
+    display: none;
+}
+.content{
+    display:flex;
+    justify-content: space-between;
+    
+
+}

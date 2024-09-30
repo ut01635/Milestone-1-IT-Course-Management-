@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Font Awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>admin_page</title>
+    <link rel="stylesheet" href="./stylefiles/admin_styles.css">
+    <link rel="stylesheet" href="./stylefiles/student.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h2>A - Z Coding Accadamy</h2>
+    </header>
+    <div class="main">
+        <div class="main-content">
+            <div class="content" id="studentContent">
+                <h1>Welcome A-Z Coding Academy Admin</h1>
+                <div class="Contentcontainer">
+                    <h2>Students Details</h2>
+                    <header>
+
+                        <div class="filterEntries">
+                            <div class="entries">
+                                Show <select name="" id="table_size">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> entries
+                            </div>
+
+                            <div class="filter">
+                                <label for="search">Search:</label>
+                                <input type="search" name="" id="search" placeholder="Enter name/ NIC Number">
+                            </div>
+                        </div>
+
+                        <div class="addStudentBtn" >
+                            <button>New Student</button>
+                        </div>
+
+                    </header>
+
+                    <div class="scrollable-container">
+                        <div class="table-container">
+                    <table>
+
+                        <thead>
+                            <tr class="heading">
+                                <th>SL No</th>
+                                <th>NIC Number</th>
+                                <th>Full Name</th>
+                                <th>Age</th>
+                                <th>DOB</th>
+                                <th>Phone</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="userInfo">
+                        </tbody>
+
+                    </table>
+                    </div>
+                </div>
+
+                    <footer>
+                        <span class="showEntries">Showing 1 to 10 of 50 entries</span>
+                        <div class="pagination">
+                          
+                        </div>
+                    </footer>
+                </div>
+
+                <!--Popup Form-->
+
+                <div class="popup-window">
+
+                    <div class="popup">
+                        <header>
+                            <h2 class="modalTitle">Fill the Form</h2>
+                            <button class="closeBtn">&times;</button>
+                        </header>
+
+                        <div class="body">
+                            <form action="#" id="myForm">
+
+                                <div class="inputFieldContainer">
+                                    <div class="form_control">
+                                        <label for="nicNumber">Nic Number</label>
+                                        <input type="text" name="" id="nicNumber" required>
+                                    </div>
+
+                                    <div class="nameField">
+                                        <div class="form_control">
+                                            <label for="fName">First Name:</label>
+                                            <input type="text" name="" id="fName" required>
+                                        </div>
+
+                                        <div class="form_control">
+                                            <label for="lName">Last Name:</label>
+                                            <input type="text" name="" id="lName" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="ageCityField">
+                                        <div class="form_control">
+                                            <label for="age">Age:</label>
+                                            <input type="number" name="" id="age" required>
+                                        </div>
+
+                                        <div class="form_control">
+                                            <label for="sDate">Date of Birth:</label>
+                                            <input type="date" name="" id="sDate" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_control">
+                                        <label for="phone">Phone:</label>
+                                        <input type="number" name="" id="phone" required>
+                                    </div>
+
+                                    <div class="form_control" id="passwordField">
+                                        <label for="password">Password</label>
+                                        <input type="text" name="Password" id="password" class="pwd" >
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <footer class="popupFooter">
+                            <button form="myForm" class="submitBtn">Submit</button>
+                        </footer>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="container add" id="container">
+                <div class="brand">
+                    <h3>ADMIN</h3>
+                    <a href="#" id="toggle" onclick="menuChage(this)"><i>
+                            <div class="menuicon"></div>
+                            <div class="menuicon"></div>
+                            <div class="menuicon"></div>
+                        </i></a>
+                </div>
+
+                <div class="navbar">
+                    <ul>
+                        <li><a href="./admin_home.html" id="home"><i><img class="icon"
+                                        src="./Assets/icons8-home-100 (1).png" alt=""></i><span>Home</span></a></li>
+                        <li><a href="./admin.student.html" id="nav-students"><i><img class="icon"
+                                        src="./Assets/icons8-notepad-user-100.png"
+                                        alt="icon"></i><span>Students</span></a>
+                        </li>
+                        <li><a href="./admin_course.html" id="nav-courses"><i><img src="./Assets/icons8-course-100.png"
+                                        alt="" class="icon"></i><span>Course</span></a></li>
+                        <li><a href="./admin_notification.html" id="nav-notifications"><i><img
+                                        src="./Assets/icons8-bell-64.png" alt=""
+                                        class="icon"></i><span>Notification</span></a></li>
+                        <li><a href="./admin_report.html" id="nav-reports"><i><img src="./Assets/icons8-report-100.png"
+                                        alt="" class="icon"></i><span>Reports</span></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scriptFiles/admin_home.js"></script>
+    <script src="./scriptFiles/Astudent.js"></script>
+</body>
+
+</html>

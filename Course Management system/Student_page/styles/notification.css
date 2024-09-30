@@ -1,0 +1,92 @@
+.main-content{
+    width: 100%;
+    margin-left: 5%;
+}
+
+.Contentcontainer{
+    margin-top: 40px;
+    width: 100% ;
+}
+.Contentcontainer header{
+    text-align: start;
+    margin: 10px;
+    margin-left: 10%;
+    margin-bottom: 30px;
+    font-size: 25px;
+}
+.Contentcontainer table {
+    text-align: center;
+    width: 80%;
+    border-collapse: collapse;
+}
+table .heading{
+    background: rgba(206, 206, 206, 0.308);
+    /* background: transparent; */
+    color: black;
+}
+table .heading th:hover{
+    background: rgba(56, 56, 56, 0.658);
+    transition: 0.3s;
+}
+table tr th, table tr td{
+    padding:3px 10px;
+    color: rgb(39, 37, 37);
+    vertical-align: middle;
+    
+}
+table tr th{
+    padding: 10px 10px;
+    border-bottom: solid 1px rgb(248, 248, 248);
+    font-size: 20px;
+}
+table tr th:first-child{
+    width: 15%;
+}
+table tr th:last-child{
+    width: 30%;
+}
+table tr:hover{
+    cursor: pointer;
+    background: rgb(150, 148, 148);
+}
+table tr td{
+    border-bottom: 1px solid #404346;
+}
+table tbody tr:first-child td{
+    border-top: 1px solid  #000000;
+}
+
+table tbody tr:nth-child(odd){
+    background: rgb(150, 148, 148);
+}
+
+table tbody tr{
+    background: #666869;
+}
+table tr td{
+    font-size: clamp(8px, 4vw, 16px);
+}
+
+table td button{
+    margin: 0 3px;
+    padding: 5px;
+    width: 35px;
+    background: #424549;
+    color: #dae0e7;
+    font-size: 16px;
+    cursor: pointer;
+    pointer-events: auto;
+    outline: none;
+    border: 1px solid #9c9c9c;
+}
+
+table .notificationDetails .dltBtn{
+    display: flex;
+    justify-content: space-between;
+}
+table tr .empty{
+    padding: 6px;
+    background: #c9c5c567;
+    text-align: center;
+}
+

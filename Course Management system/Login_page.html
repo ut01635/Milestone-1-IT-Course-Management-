@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-Z Coding Academy Login</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External stylesheet -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('./assets/background1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(7px);
+        }
+
+        .container {
+            max-width: 100%;
+            width: 100%;
+            max-width: 400px;
+            background: linear-gradient(0deg, #ffffff 0%, #faeceb 100%);
+            border-radius: 20px;
+            padding: 25px 35px;
+            border: 5px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            box-sizing: border-box;
+        }
+
+        .heading {
+            text-align: center;
+            font-weight: 600;
+            font-size: 24px;
+            color: #5f312d;
+            margin-bottom: 20px;
+        }
+
+        .login-form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #5f312d;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            background: #ffffff;
+            border: none;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        input::placeholder {
+            color: #aaaaaa;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #573634;
+        }
+
+        .login-btn {
+            display: block;
+            width: 100%;
+            font-weight: bold;
+            background: linear-gradient(45deg, #6b3e3b 0%, #a7423b 100%);
+            color: #ffffff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(45deg, #5a2f2f 0%, #8d3e3e 100%);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .login-btn:active {
+            background: linear-gradient(45deg, #4e2a2a 0%, #7b3b3b 100%);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+        }
+
+        .display-message {
+            margin-top: 20px;
+            color: red;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+                max-width: 90%;
+            }
+
+            .heading {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loginSection" class="container">
+        <h2 class="heading">A-Z Coding Academy</h2>
+        <form id="loginform" class="login-form">
+            <div class="form-group">
+                <label for="loginNIC">NIC Number</label>
+                <input type="text" id="loginNIC" name="loginNIC" placeholder="NIC Number" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="loginPassword" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+            <p id="loginMessage" class="display-message"></p>
+        </form>
+    </div>
+
+    <script src="login_page.js"></script> <!-- External JavaScript file -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const students = JSON.parse(localStorage.getItem('students')) || [];
+            const admins = JSON.parse(localStorage.getItem('admin')) || [];
+
+            const alertMessage = "Please check your internet connection....";
+
+            const encryptPassword = password => btoa(password); // Avoid using in real-world apps
+
+            document.getElementById('loginform').addEventListener('submit', event => {
+                event.preventDefault();
+
+                const nicNumber = document.getElementById('loginNIC').value.trim();
+                const password = encryptPassword(document.getElementById('loginPassword').value.trim());
+
+                const student = students.find(s => s.nicNumber === nicNumber && s.password === password);
+                const admin = admins.find(a => a.nicNumber === nicNumber && a.password === password);
+
+                if (admin) {
+                    alert(alertMessage);
+                    window.location.href = 'admin/admin_home.html';
+                } else if (student) {
+                    sessionStorage.setItem('loggedStudent', nicNumber);
+                    alert(alertMessage);
+                    window.location.href = 'Student_page/student_home.html';
+                } else {
+                    document.getElementById('loginMessage').textContent = "Invalid NIC number or password.";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

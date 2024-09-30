@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Font Awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <title>Student DashBoard</title>
+    <link rel="stylesheet" href="./styles/student_styles.css">
+    <link rel="stylesheet" href="./styles/notification.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h2>A - Z Coding Acadamy</h2>
+    </header>
+    <div class="content">
+        <div class="main-content" id="main-content">
+            <div class="Contentcontainer">
+                <header>
+                    <h2>notification</h2>
+                </header>
+                <table>
+                    <thead>
+                        <th class="heading">Date</th>
+                        <th class="heading">Message</th>
+                    </thead>
+                    <tbody class="MessageInfo">
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="Contentcontainer">
+
+                <Div class="detail-cart">
+                    <div id="date">2024-08-14</div>
+                    <div id="message">hi student</div>
+                </Div>
+                <Div class="detail-cart">
+                    <div id="date">2024-08-14</div>
+                    <div id="message">hi student</div>
+                </Div>
+                <Div class="detail-cart">
+                    <div id="date">2024-08-14</div>
+                    <div id="message">hi student</div>
+                </Div>
+            </div> -->
+        </div>
+        <div class="sidebar">
+            <div class="container add" id="container">
+                <div class="brand">
+                    <h3>Student</h3>
+                    <a href="#" id="toggle" onclick="menuChage(this)"><i>
+                            <div class="menuicon1"></div>
+                            <div class="menuicon2"></div>
+                            <div class="menuicon3"></div>
+                        </i></a>
+                </div>
+
+                <div class="navbar">
+                    <ul>
+                        <li><a href="./student_home.html" id="home"><i><img class="icon"
+                                        src="./Assets/icons8-home-100 (1).png" alt=""></i><span>Home</span></a></li>
+                        <li><a href="./course.html" id="nav-course"><i><img class="icon"
+                                        src="./Assets/icons8-course-100.png" alt="icon"></i><span>Course</span></a></li>
+                        <li><a href="./payment.html" id="nav-payment"><i><img src="./Assets/icons8-payment-100.png"
+                                        alt="" class="icon"></i><span>Payment</span></a></li>
+                        <li><a href="./notification.html" id="nav-notifications"><i><img
+                                        src="./Assets/icons8-bell-96.png" alt=""
+                                        class="icon"></i><span>Notification</span></a></li>
+                        <li><a href="./profile.html" id="nav-reports"><i><img src="./Assets/icons8-account-100.png"
+                                        alt="" class="icon"></i><span>Profile</span></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts/student_home.js"></script>
+    <script src="./scripts/notification.js"></script>
+</body>
+
+</html>

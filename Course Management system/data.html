@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+</head>
+<body>
+
+    <!-- <script src="./data.js"></script> -->
+    <script>
+        // Function to simulate password encryption (for demonstration purposes)
+function encryptPassword(password) {
+    return btoa(password); // Simple encryption using base64 encoding
+}
+let students = [
+    { nicNumber: "2002123", fName: "john", lName: "Doe", ageVal: 22, dobVal: "2000-04-01", phoneVal: "0771234567", password: encryptPassword("123456") },
+    { nicNumber: "2002124", fName: "Jane", lName: "Smith", ageVal: 29, dobVal: "1995-07-15", phoneVal: "0787654321", password: encryptPassword("123456") },
+    { nicNumber: "2002125", fName: "Emily", lName: "Johnson", ageVal: 31, dobVal: "1992-11-25", phoneVal: "0791234567", password: encryptPassword("123456") },
+    { nicNumber: "2002126", fName: "Michael", lName: "Williams", ageVal: 35, dobVal: "1988-06-18", phoneVal: "0765432109", password: encryptPassword("123456") },
+    { nicNumber: "2002127", fName: "Sarah", lName: "Brown", ageVal: 26, dobVal: "1997-02-11", phoneVal: "0759876543", password: encryptPassword("123456") },
+    { nicNumber: "2002128", fName: "James", lName: "Jones", ageVal: 40, dobVal: "1983-09-03", phoneVal: "0743216789", password: encryptPassword("123456") },
+    { nicNumber: "2002129", fName: "Olivia", lName: "Garcia", ageVal: 24, dobVal: "1999-12-20", phoneVal: "0734567890", password: encryptPassword("123456") },
+    { nicNumber: "2002130", fName: "David", lName: "Martinez", ageVal: 33, dobVal: "1990-04-12", phoneVal: "0723456789", password: encryptPassword("123456") },
+    { nicNumber: "2002131", fName: "Sophia", lName: "Hernandez", ageVal: 27, dobVal: "1996-05-23", phoneVal: "0712345678", password: encryptPassword("123456") },
+    { nicNumber: "2002132", fName: "Daniel", lName: "Wilson", ageVal: 28, dobVal: "1995-08-16", phoneVal: "0709876543", password: encryptPassword("123456") },
+];
+
+let courses = [
+    { courseId: "001", courseName: "C++ Basics", category: "Beginner", duration: 2, courseFee: 40000.00 },
+    { courseId: "002", courseName: "C++ Advanced", category: "Intermediate", duration: 6, courseFee: 60000.00 },
+    { courseId: "003", courseName: "C# Basics", category: "Beginner", duration: 2, courseFee: 45000.00 },
+    { courseId: "004", courseName: "C# Advanced", category: "Intermediate", duration: 6, courseFee: 62000.00 },
+    { courseId: "005", courseName: "Java Basics", category: "Beginner", duration: 2, courseFee: 43000.00 },
+    { courseId: "006", courseName: "Java Advanced", category: "Intermediate", duration: 6, courseFee: 64000.00 },
+    { courseId: "007", courseName: "JavaScript Basics", category: "Beginner", duration: 2, courseFee: 42000.00 },
+    { courseId: "008", courseName: "JavaScript Advanced", category: "Intermediate", duration: 6, courseFee: 65000.00 },
+    { courseId: "009", courseName: "Python Basics", category: "Beginner", duration: 2, courseFee: 46000.00 },
+    { courseId: "010", courseName: "Python Advanced", category: "Intermediate", duration: 6, courseFee: 67000.00 },
+    { courseId: "011", courseName: "SQL Basics", category: "Beginner", duration: 2, courseFee: 43000.00 },
+    { courseId: "012", courseName: "SQL Advanced", category: "Intermediate", duration: 6, courseFee: 60000.00},
+    { courseId: "013", courseName: "PHP Basics", category: "Beginner", duration: 2, courseFee: 44000.00 },
+    { courseId: "014", courseName: "PHP Advanced", category: "Intermediate", duration: 6, courseFee: 62000.00 },
+    { courseId: "015", courseName: "Kotlin Basics", category: "Beginner", duration: 2, courseFee: 45000.00 },
+    { courseId: "016", courseName: "Kotlin Advanced", category: "Intermediate", duration: 6, courseFee: 63000.00 },
+    { courseId: "017", courseName: "TypeScript Basics", category: "Beginner", duration: 2, courseFee: 44000.00 },
+    { courseId: "018", courseName: "TypeScript Advanced", category: "Intermediate", duration: 6, courseFee: 64000.00 },
+    { courseId: "019", courseName: "C Basics", category: "Beginner", duration: 2, courseFee: 42000.00 },
+    { courseId: "020", courseName: "C Advanced", category: "Intermediate", duration: 6, courseFee: 60000.00 },
+]
+
+let Admins = [
+    { nicNumber: "12345678901", password: encryptPassword("123456") },
+    { nicNumber: "12345678902", password: encryptPassword("234567") },
+    { nicNumber: "12345678903", password: encryptPassword("345612") },
+    { nicNumber: "12345678904", password: encryptPassword("456123") },
+    { nicNumber: "12345678905", password: encryptPassword("561234") },
+    { nicNumber: "12345678906", password: encryptPassword("612345") },
+    { nicNumber: "12345678907", password: encryptPassword("12345678") },
+    { nicNumber: "12345678908", password: encryptPassword("1234567") },
+    { nicNumber: "12345678909", password: encryptPassword("123456") },
+    { nicNumber: "12345678910", password: encryptPassword("123456") }
+]
+
+let FollowedCourse = [
+    {nicNumber: "2002123", courseId: "001", courseName: "C++ Basics", category: "Beginner", duration: 2, courseFee: 40000.00},
+    {nicNumber: "2002142", courseId: "002", courseName: "C++ Advanced", category: "Intermediate", duration: 6, courseFee: 60000.00},
+    {nicNumber: "2002140", courseId: "003", courseName: "C# Basics", category: "Beginner", duration: 2, courseFee: 45000.00 },
+    {nicNumber: "2002138", courseId: "004", courseName: "C# Advanced", category: "Intermediate", duration: 6, courseFee: 62000.00 },
+    {nicNumber: "2002141", courseId: "005", courseName: "Java Basics", category: "Beginner", duration: 2, courseFee: 43000.00 },
+    {nicNumber: "2002136", courseId: "006", courseName: "Java Advanced", category: "Intermediate", duration: 6, courseFee: 64000.00 },
+    {nicNumber: "2002139", courseId: "007", courseName: "JavaScript Basics", category: "Beginner", duration: 2, courseFee: 42000.00 },
+    {nicNumber: "2002142", courseId: "008", courseName: "JavaScript Advanced", category: "Intermediate", duration: 6, courseFee: 65000.00 }
+]
+
+let notification = [
+    {nicNumber: "2002123",date : "2024-08-10", message : "hello Student please pay course fee"},
+    { nicNumber: "2002123", date: "2024-08-10", message: "Hello John Doe, please pay the course fee for 'C++ Basics'." },
+    { nicNumber: "2002124", date: "2024-08-11", message: "Hi Jane Smith, your course 'C# Basics' payment is due." },
+    { nicNumber: "2002125", date: "2024-08-12", message: "Reminder for Emily Johnson: Course fee for 'Java Basics' is pending." },
+    { nicNumber: "2002126", date: "2024-08-13", message: "Michael Williams, please ensure payment for 'Python Advanced'." },
+    { nicNumber: "2002127", date: "2024-08-14", message: "Sarah Brown, your fee for 'JavaScript Basics' needs to be cleared." },
+    { nicNumber: "2002128", date: "2024-08-15", message: "James Jones, don't forget to pay for the 'PHP Basics' course." },
+    { nicNumber: "2002129", date: "2024-08-16", message: "Olivia Garcia, the payment for 'Go Advanced' is overdue." },
+    { nicNumber: "2002130", date: "2024-08-17", message: "David Martinez, please settle your fee for 'Kotlin Basics' soon." },
+    { nicNumber: "2002131", date: "2024-08-18", message: "Sophia Hernandez, the 'TypeScript Advanced' course fee is pending." },
+    { nicNumber: "2002132", date: "2024-08-19", message: "Daniel Wilson, a reminder to pay for 'Rust Basics' course." }
+]
+
+const payments = [
+    { nicNumber: "2002123", courseId: "001", amount: 20000.00, plan: "divide", date: "2024-08-20T06:53:41.160Z" },
+    { nicNumber: "2002142", courseId: "002", amount: 10000.00, plan: "divide", date: "2024-08-20T06:53:41.160Z" },
+    { nicNumber: "2002140", courseId: "003", amount: 45000.00, plan: "Full", date: "2024-08-20T06:53:41.160Z" },
+    { nicNumber: "2002138", courseId: "004", amount: 62000.00, plan: "Full", date: "2024-08-20T06:53:41.160Z" },
+    { nicNumber: "2002141", courseId: "005", amount: 43000.00, plan: "Full", date: "2024-08-20T06:53:41.160Z" },
+];
+
+
+localStorage.setItem('students', JSON.stringify(students));
+localStorage.setItem('course', JSON.stringify(courses));
+localStorage.setItem('admin' , JSON.stringify(Admins));
+localStorage.setItem('followedCourse' , JSON.stringify(FollowedCourse));
+localStorage.setItem('notification', JSON.stringify(notification));
+localStorage.setItem('payment', JSON.stringify(payments))
+
+
+let retrieveStudents = JSON.parse(localStorage.getItem('students'));
+let retrieveCourses = JSON.parse(localStorage.getItem('course'));
+let retrieveAdmins = JSON.parse(localStorage.getItem('admin'));
+let retrieveFollowedCourse = JSON.parse(localStorage.getItem('followedCourse'));
+let retrieveNotification = JSON.parse(localStorage.getItem('notification'));
+
+
+
+
+
+console.log(retrieveCourses);
+console.log(retrieveStudents);
+console.log(retrieveAdmins);
+console.log(retrieveFollowedCourse);
+console.log(retrieveNotification);
+
+    </script>
+</body>
+</html>

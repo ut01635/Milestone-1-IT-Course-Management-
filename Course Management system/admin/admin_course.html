@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Font Awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>admin_C</title>
+    <link rel="stylesheet" href="./stylefiles/admin_styles.css">
+    <link rel="stylesheet" href="./stylefiles/course.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h2>A - Z Coding Accadamy</h2>
+    </header>
+    <div class="main">
+        <div class="main-content">
+            <div class="content" id="CourseContent">
+                <div class="Contentcontainer">
+                    <h2>Courses</h2>
+
+                    <header>
+
+                        <div class="filterEntries">
+                            <div class="filter">
+                                <label for="search">Search:</label>
+                                <input type="search" name="" id="search" placeholder="Course ID / Category/name">
+                            </div>
+                        </div>
+
+                        <div class="addCourseBtn">
+                            <button>New Course</button>
+                        </div>
+
+                    </header>
+
+                    <!-- <div class="scrollable-container">
+                        <div class="table-container"> -->
+                            <table>
+                                <thead>
+                                    <tr class="heading">
+                                        <th>Course ID</th>
+                                        <th>Course Name</th>
+                                        <th>Category</th>
+                                        <th>Duration</th>
+                                        <th>Course Fee</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="courseInfo">
+
+                                </tbody>
+                            </table>
+                        <!-- </div>
+                    </div> -->
+
+
+                    <footer>
+                        <span class="showEntries">Showing 1 to 10 of 50 entries</span>
+                        <div class="pagination">
+
+                        </div>
+                    </footer>
+                </div>
+
+                <!--Popup Form-->
+
+                <div class="popup-window">
+
+                    <div class="popup">
+                        <header>
+                            <h2 class="modalTitle">Fill the Course Details</h2>
+                            <button class="closeBtn">&times;</button>
+                        </header>
+
+                        <div class="body">
+                            <form action="#" id="myForm">
+
+                                <div class="inputFieldContainer">
+                                    <!-- <div class="form_control">
+                                        <label for="courseId">Course ID:</label>
+                                        <input type="text" name="" id="courseId" required>
+                                    </div> -->
+
+                                    <div class="form_control">
+                                        <label for="courseName">Course Name:</label>
+                                        <input type="text" name="" id="courseName" required>
+                                    </div>
+
+                                    <div class="form_control">
+                                        <select name="category" id="category">
+                                            <option value="Beginner">Beginner</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form_control">
+                                        <select name="Duration" id="duration">
+                                            <option value="2">2 Months</option>
+                                            <option value="6">6 Months</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form_control">
+                                        <label for="courseFee">Course Fee</label>
+                                        <input type="text" name="courseFee" id="courseFee" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <footer class="popupFooter">
+                            <button form="myForm" class="submitBtn">Submit</button>
+                        </footer>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="container add" id="container">
+                <div class="brand">
+                    <h3>ADMIN</h3>
+                    <a href="#" id="toggle" onclick="menuChage(this)"><i>
+                            <div class="menuicon"></div>
+                            <div class="menuicon"></div>
+                            <div class="menuicon"></div>
+                        </i></a>
+                </div>
+
+                <div class="navbar">
+                    <ul>
+                        <li><a href="./admin_home.html" id="home"><i><img class="icon"
+                                        src="./Assets/icons8-home-100 (1).png" alt=""></i><span>Home</span></a></li>
+                        <li><a href="./admin.student.html" id="nav-students"><i><img class="icon"
+                                        src="./Assets/icons8-notepad-user-100.png"
+                                        alt="icon"></i><span>Students</span></a>
+                        </li>
+                        <li><a href="./admin_course.html" id="nav-courses"><i><img src="./Assets/icons8-course-100.png"
+                                        alt="" class="icon"></i><span>Course</span></a></li>
+                        <li><a href="./admin_notification.html" id="nav-notifications"><i><img
+                                        src="./Assets/icons8-bell-64.png" alt=""
+                                        class="icon"></i><span>Notification</span></a></li>
+                        <li><a href="./admin_report.html" id="nav-reports"><i><img src="./Assets/icons8-report-100.png"
+                                        alt="" class="icon"></i><span>Reports</span></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Confirmation Modal -->
+    <div class="confirmation-window">
+        <div class="confirmation-popup">
+            <!-- <header>
+                <h2>Confirm Deletion</h2>
+                <button class="closeConfirmBtn">&times;</button>
+            </header> -->
+            <div class="body">
+                <h3>Are you sure you want to remove this course?</h3>
+            </div>
+            <footer>
+                <button class="confirmBtn">Delete</button>
+                <button class="cancelBtn">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+
+    <script>
+        let newStudentAddBtn = document.querySelector('.addCourseBtn'),
+            darkBg = document.querySelector('.popup-window'),
+            popupForm = document.querySelector('.popup'),
+            crossBtn = document.querySelector('.closeBtn'),
+            submitBtn = document.querySelector('.submitBtn'),
+            modalTitle = document.querySelector('.modalTitle'),
+            popupFooter = document.querySelector('.popupFooter'),
+            form = document.querySelector('form'),
+            // formInputFields = document.querySelectorAll('form input'),
+            courseId = document.getElementById('courseId'),
+            courseName = document.getElementById("courseName"),
+            category = document.getElementById("category"),
+            duration = document.getElementById("duration"),
+            courseFee = document.getElementById("courseFee"),
+            entries = document.querySelector(".showEntries"),
+            tabSize = document.getElementById("table_size"),
+            courseInfo = document.querySelector(".courseInfo"),
+            table = document.querySelector("table"),
+            filterData = document.getElementById("search")
+        let formInputFields = document.querySelectorAll('form input, form select');
+
+
+        let originalData = localStorage.getItem('course') ? JSON.parse(localStorage.getItem('course')) : []
+        let getData = [...originalData]
+        console.log(originalData.length);
+
+
+        let isEdit = false, editId
+
+        var arrayLength = 0
+        var tableSize = 10
+        var startIndex = 1
+        var endIndex = 0
+        var currentIndex = 1
+        var maxIndex = 0
+
+        showInfo()
+
+
+        newStudentAddBtn.addEventListener('click', () => {
+            isEdit = false
+            submitBtn.innerHTML = "Submit"
+            modalTitle.innerHTML = "Fill the Form"
+            popupFooter.style.display = "block"
+            darkBg.classList.add('active')
+            popupForm.classList.add('active')
+
+            // pwdField.add('active')
+        })
+
+        crossBtn.addEventListener('click', () => {
+            darkBg.classList.remove('active')
+            popupForm.classList.remove('active')
+            form.reset()
+        })
+
+
+        function preLoadCalculations() {
+            array = getData
+            arrayLength = array.length
+            maxIndex = arrayLength / tableSize
+
+            if ((arrayLength % tableSize) > 0) {
+                maxIndex++
+            }
+        }
+
+
+
+        function displayIndexBtn() {
+            preLoadCalculations()
+
+            const pagination = document.querySelector('.pagination')
+
+            pagination.innerHTML = ""
+
+            pagination.innerHTML = '<button onclick="prev()" class="prev">Previous</button>'
+
+            for (let i = 1; i <= maxIndex; i++) {
+                pagination.innerHTML += '<button onclick= "paginationBtn(' + i + ')" index="' + i + '">' + i + '</button>'
+            }
+
+            pagination.innerHTML += '<button onclick="next()" class="next">Next</button>'
+
+            highlightIndexBtn()
+        }
+
+
+        function highlightIndexBtn() {
+            startIndex = ((currentIndex - 1) * tableSize) + 1
+            endIndex = (startIndex + tableSize) - 1
+
+            if (endIndex > arrayLength) {
+                endIndex = arrayLength
+            }
+
+            if (maxIndex >= 2) {
+                var nextBtn = document.querySelector(".next")
+                nextBtn.classList.add("act")
+            }
+
+
+            entries.textContent = `Showing ${startIndex} to ${endIndex} of ${arrayLength} entries`
+
+            var paginationBtns = document.querySelectorAll('.pagination button')
+            paginationBtns.forEach(btn => {
+                btn.classList.remove('active')
+                if (btn.getAttribute('index') === currentIndex.toString()) {
+                    btn.classList.add('active')
+                }
+            })
+
+
+            showInfo()
+        }
+
+
+
+
+        function showInfo() {
+            document.querySelectorAll(".courseDetails").forEach(info => info.remove())
+
+            var tab_start = startIndex - 1
+            var tab_end = endIndex
+
+            if (getData.length > 0) {
+                for (var i = tab_start; i < tab_end; i++) {
+                    var course = getData[i]
+
+
+                    if (course) {
+                        let createElement = `<tr class = "courseDetails">
+                <td>${course.courseId}</td>
+                <td>${course.courseName}</td>
+                <td>${course.category}</td>
+                <td>${course.duration + " Months"}</td>
+                <td>${course.courseFee + ".00"}</td>
+                <td>
+                    <button onclick="readInfo('${course.courseId}','${course.courseName}', '${course.category}', '${course.duration}', '${course.courseFee}')"><i class="fa-regular fa-eye"></i></button>
+
+                    <button onclick="editInfo('${i}','${course.courseId}' , '${course.courseName}','${course.category}','${course.duration}', '${course.courseFee}')"><i class="fa-regular fa-pen-to-square"></i></button>
+
+
+                    <button onclick = "deleteInfo(${i})"><i class="fa-regular fa-trash-can"></i></button>
+                </td>
+            </tr>`
+
+                        courseInfo.innerHTML += createElement
+                        table.style.minWidth = "80%"
+                    }
+                }
+            }
+
+
+            else {
+                courseInfo.innerHTML = `<tr class="courseDetails"><td class="empty" colspan="11" align="center">No data available in table</td></tr>`
+                table.style.minWidth = "80%"
+            }
+        }
+
+        showInfo()
+
+
+        // function readInfo(CourseId, CourseName, Category, Duration, CourseFee) {
+        //     courseId.value = CourseId
+        //     courseName.value = CourseName
+        //     category.value = Category
+        //     duration.value = Duration
+        //     courseFee.value = CourseFee + ".00"
+
+        //     darkBg.classList.add('active')
+        //     popupForm.classList.add('active')
+        //     popupFooter.style.display = "none"
+        //     modalTitle.innerHTML = "Profile"
+        //     formInputFields.forEach(input => {
+        //         input.disabled = false; // Ensure input fields are enabled
+
+        //     });
+        // }
+        function readInfo(CourseId, CourseName, Category, Duration, CourseFee) {
+            courseId.value = CourseId;
+            courseName.value = CourseName;
+            category.value = Category;
+            duration.value = Duration;
+            courseFee.value = CourseFee + ".00";
+
+            darkBg.classList.add('active');
+            popupForm.classList.add('active');
+            popupFooter.style.display = "none";
+            modalTitle.innerHTML = "Course Details";
+
+            // Verify the fields being disabled
+            formInputFields.forEach(input => {
+                console.log('Disabling:', input.id, 'Current disabled state:', input.disabled);
+                input.disabled = true;
+            });
+
+            document.querySelectorAll('form select').forEach(select => {
+                console.log('Disabling select:', select.id, 'Current disabled state:', select.disabled);
+                select.disabled = true;
+            });
+        }
+
+
+        // function editInfo(CourseId, CourseName, category, Duration, CourseFee) {
+        //     isEdit = true
+        //     editId = courseId
+
+        //     // Find the index of the item to edit in the original data based on id
+        //     const originalIndex = originalData.findIndex(item => item.courseId === courseId)
+
+        //     // Update the original data
+        //     originalData[originalIndex] = {
+
+        //         // CourseId :CourseId,
+        //         // CourseName: CourseName,
+        //         // category: category,
+        //         // Duration: Duration,
+        //         // CourseFee : CourseFee
+        //     }
+
+        //     courseId.value = CourseId
+        //     courseName.value = CourseName
+        //     category.value = category
+        //     duration.value = Duration
+        //     courseFee.value = CourseFee
+
+
+        //     darkBg.classList.add('active')
+        //     popupForm.classList.add('active')
+        //     popupFooter.style.display = "block"
+        //     modalTitle.innerHTML = "Update Course Details"
+        //     submitBtn.innerHTML = "Update"
+        //     formInputFields.forEach(input => {
+        //         input.disabled = false
+        //     })
+
+        // }
+        function editInfo(index) {
+            isEdit = true;
+            editId = index; // Set the index of the course being edited
+
+            // Get the course data from getData using the index
+            const course = getData[index];
+
+            // Set the form values to the course being edited
+            courseName.value = course.courseName;
+            category.value = course.category;
+            duration.value = course.duration;
+            courseFee.value = course.courseFee;
+
+            // Show the modal for editing
+            darkBg.classList.add('active');
+            popupForm.classList.add('active');
+            popupFooter.style.display = "block";
+            modalTitle.innerHTML = "Update Course Details";
+            submitBtn.innerHTML = "Update";
+            formInputFields.forEach(input => {
+                input.disabled = false; // Ensure input fields are enabled
+            });
+        }
+
+
+        function deleteInfo(index) {
+            if (confirm("Aer you sure want to remove?")) {
+                originalData.splice(index, 1);
+                localStorage.setItem("course", JSON.stringify(originalData));
+
+                // Update getData after deleting the record
+                getData = [...originalData];
+
+                preLoadCalculations()
+
+                if (getData.length === 0) {
+                    currentIndex = 1
+                    startIndex = 1
+                    endIndex = 0
+                }
+                else if (currentIndex > maxIndex) {
+                    currentIndex = maxIndex
+                }
+
+                showInfo()
+                highlightIndexBtn()
+                displayIndexBtn()
+
+                var nextBtn = document.querySelector('.next')
+                var prevBtn = document.querySelector('.prev')
+
+                if (Math.floor(maxIndex) > currentIndex) {
+                    nextBtn.classList.add("act")
+                }
+                else {
+                    nextBtn.classList.remove("act")
+                }
+
+
+                if (currentIndex > 1) {
+                    prevBtn.classList.add('act')
+                }
+            }
+        }
+
+        function GenarateID() {
+           let newId = "C" + 0 + (originalData.length + 1);
+           return newId
+        }
+        console.log(GenarateID());
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            const information = {
+                courseId: GenarateID(),
+                courseName: courseName.value,
+                category: category.value,
+                duration: duration.value,
+                courseFee: courseFee.value
+            }
+
+            if (!isEdit) {
+                originalData.unshift(information)
+            }
+            else {
+                originalData[editId] = information
+            }
+            getData = [...originalData]
+            localStorage.setItem('course', JSON.stringify(originalData))
+
+            submitBtn.innerHTML = "Submit"
+            modalTitle.innerHTML = "Fill the Course Details"
+
+            darkBg.classList.remove('active')
+            popupForm.classList.remove('active')
+            form.reset()
+
+
+            highlightIndexBtn()
+            displayIndexBtn()
+            showInfo()
+
+            var nextBtn = document.querySelector(".next")
+            var prevBtn = document.querySelector(".prev")
+            if (Math.floor(maxIndex) > currentIndex) {
+                nextBtn.classList.add("act")
+            }
+            else {
+                nextBtn.classList.remove("act")
+            }
+
+
+            if (currentIndex > 1) {
+                prevBtn.classList.add("act")
+            }
+        })
+
+
+        function next() {
+            var prevBtn = document.querySelector('.prev')
+            var nextBtn = document.querySelector('.next')
+
+            if (currentIndex <= maxIndex - 1) {
+                currentIndex++
+                prevBtn.classList.add("act")
+
+                highlightIndexBtn()
+            }
+
+            if (currentIndex > maxIndex - 1) {
+                nextBtn.classList.remove("act")
+            }
+        }
+
+
+        function prev() {
+            var prevBtn = document.querySelector('.prev')
+
+            if (currentIndex > 1) {
+                currentIndex--
+                prevBtn.classList.add("act")
+                highlightIndexBtn()
+            }
+
+            if (currentIndex < 2) {
+                prevBtn.classList.remove("act")
+            }
+        }
+
+
+        function paginationBtn(i) {
+            currentIndex = i
+
+            var prevBtn = document.querySelector('.prev')
+            var nextBtn = document.querySelector('.next')
+
+            highlightIndexBtn()
+
+            if (currentIndex > maxIndex - 1) {
+                nextBtn.classList.remove('act')
+            }
+            else {
+                nextBtn.classList.add("act")
+            }
+
+
+            if (currentIndex > 1) {
+                prevBtn.classList.add("act")
+            }
+
+            if (currentIndex < 2) {
+                prevBtn.classList.remove("act")
+            }
+        }
+
+
+
+        // tabSize.addEventListener('change', () => {
+        //     var selectedValue = parseInt(tabSize.value)
+        //     tableSize = selectedValue
+        //     currentIndex = 1
+        //     startIndex = 1
+        //     displayIndexBtn()
+        // })
+
+
+
+        filterData.addEventListener("input", () => {
+            const searchTerm = filterData.value.toLowerCase().trim()
+
+            if (searchTerm !== "") {
+
+                const filteredData = originalData.filter((item) => {
+                    const courseName = item.courseName.toLowerCase()
+                    const courseId = item.courseId.toLowerCase()
+                    const category = item.category.toLowerCase()
+
+                    return (
+                        courseName.includes(searchTerm) ||
+                        courseId.includes(searchTerm) ||
+                        category.includes(searchTerm)
+                    )
+                })
+
+                // Update the current data with filtered data
+                getData = filteredData
+            }
+
+            else {
+                getData = JSON.parse(localStorage.getItem('course')) || []
+            }
+
+
+            currentIndex = 1
+            startIndex = 1
+            displayIndexBtn()
+        })
+
+
+        // JavaScript Code
+
+let confirmationWindow = document.querySelector('.confirmation-window');
+// let closeConfirmBtn = document.querySelector('.closeConfirmBtn');
+let confirmBtn = document.querySelector('.confirmBtn');
+let cancelBtn = document.querySelector('.cancelBtn');
+
+let courseToDeleteId; // Variable to store the ID of the course to delete
+
+// Function to show confirmation modal
+function showConfirmationModal(courseId) {
+    courseToDeleteId = courseId;
+    confirmationWindow.style.display = 'flex';
+}
+
+// Function to hide confirmation modal
+function hideConfirmationModal() {
+    confirmationWindow.style.display = 'none';
+}
+
+// Event listener for close button in the confirmation modal
+// closeConfirmBtn.addEventListener('click', () => {
+//     hideConfirmationModal();
+// });
+
+// Event listener for cancel button
+cancelBtn.addEventListener('click', () => {
+    hideConfirmationModal();
+});
+
+// Event listener for confirm button
+confirmBtn.addEventListener('click', () => {
+    checkAndDeleteCourse(courseToDeleteId);
+    hideConfirmationModal();
+});
+
+// Function to check if the course is followed by students and delete if not
+function checkAndDeleteCourse(courseId) {
+    // Fetch followed courses from local storage
+    let followedCourses = JSON.parse(localStorage.getItem('followedCourse')) || [];
+
+    // Check if the course is followed
+    if (followedCourses.some(course => course.courseId === courseId)) {
+        alert("Students are following this course, so it can't be deleted.");
+    } else {
+        // Remove the course from local storage
+        let originalData = JSON.parse(localStorage.getItem('course')) || [];
+        let updatedData = originalData.filter(course => course.courseId !== courseId);
+
+        localStorage.setItem('course', JSON.stringify(updatedData));
+        getData = [...updatedData];
+        showInfo(); // Refresh the course information
+    }
+}
+
+// Modify delete button logic to use showConfirmationModal
+function deleteInfo(index) {
+    const course = getData[index];
+    if (course) {
+        showConfirmationModal(course.courseId);
+    }
+}
+
+
+
+        displayIndexBtn()
+    </script>
+    <script src="./scriptFiles/admin_home.js"></script>
+    <script src="./scriptFiles/course.js"></script>
+</body>
+
+</html>

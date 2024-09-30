@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <title>Student DashBoard</title>
+    <link rel="stylesheet" href="./styles/student_styles.css">
+    <link rel="stylesheet" href="./styles/profile.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h2>A - Z Coding Acadamy</h2>
+    </header>
+    <div class="content">
+        <div class="main-content" id="main-content">
+            <div class="main">
+
+                <Div class="detail-cart">
+                    <h1>Profile</h1>
+                    <div class="detailControl">
+                        <label for="nicNumber">NIC Number :</label>
+                        <div id="nicNumber" class="data"></div>
+                    </div>
+                    <div class="detailControl">
+                        <label for="fname">First name :</label>
+                        <div id="fname" class="data"></div>
+                    </div>
+                    <div class="detailControl">
+                        <label for="lname">Last name :</label>
+                        <div id="lname" class="data"></div>
+                    </div>
+                    <div class="detailControl">
+                        <label for="age">Age :</label>
+                        <div id="age" class="data"></div>
+                    </div>
+                    <div class="detailControl">
+                        <label for="dob">Date of Birth :</label>
+                        <div id="dob" class="data"></div>
+                    </div>
+                    <div class="detailControl">
+                        <label for="phone">Phone Number :</label>
+                        <div id="phone" class="data"></div>
+                    </div>
+                    <button id="edit">Edit</button>
+                </Div>
+
+                <!--Popup Form-->
+
+                <div class="popup-window">
+
+                    <div class="popup">
+                        <header>
+                            <h2 class="modalTitle">Fill the Form</h2>
+                            <button class="closeBtn">&times;</button>
+                        </header>
+
+                        <div class="body">
+                            <form action="#" id="myForm">
+
+                                <div class="inputFieldContainer">
+
+                                    <div class="form_control">
+                                        <label for="nicNumber">NIC Number</label>
+                                        <input type="text" name="nicNumber" id="nicNumber" readonly>
+                                    </div>
+
+                                    <div class="nameField">
+                                        <div class="form_control">
+                                            <label for="fName">First Name:</label>
+                                            <input type="text" name="" id="fName" required>
+                                        </div>
+
+                                        <div class="form_control">
+                                            <label for="lName">Last Name:</label>
+                                            <input type="text" name="" id="lName" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="ageCityField">
+                                        <div class="form_control">
+                                            <label for="age">Age:</label>
+                                            <input type="number" name="" id="age" required>
+                                        </div>
+
+                                        <div class="form_control">
+                                            <label for="sDate">Date of Birth:</label>
+                                            <input type="date" name="" id="sDate" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_control">
+                                        <label for="phone">Phone:</label>
+                                        <input type="number" name="" id="phone" required>
+                                    </div>
+
+                                    <div class="form_control">
+                                        <label for="password">Password</label>
+                                        <input type="text" name="Password" id="password" class="pwd" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <footer class="popupFooter">
+                            <button form="myForm" class="submitBtn">Submit</button>
+                        </footer>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="container add" id="container">
+                <div class="brand">
+                    <h3>Student</h3>
+                    <a href="#" id="toggle" onclick="menuChage(this)"><i>
+                            <div class="menuicon1"></div>
+                            <div class="menuicon2"></div>
+                            <div class="menuicon3"></div>
+                        </i></a>
+                </div>
+
+                <div class="navbar">
+                    <ul>
+                        <li><a href="./student_home.html" id="home"><i><img class="icon"
+                                        src="./Assets/icons8-home-100 (1).png" alt=""></i><span>Home</span></a></li>
+                        <li><a href="./course.html" id="nav-course"><i><img class="icon"
+                                        src="./Assets/icons8-course-100.png" alt="icon"></i><span>Course</span></a></li>
+                        <li><a href="./payment.html" id="nav-payment"><i><img src="./Assets/icons8-payment-100.png"
+                                        alt="" class="icon"></i><span>Payment</span></a></li>
+                        <li><a href="./notification.html" id="nav-notifications"><i><img
+                                        src="./Assets/icons8-bell-96.png" alt=""
+                                        class="icon"></i><span>Notification</span></a></li>
+                        <li><a href="./profile.html" id="nav-reports"><i><img src="./Assets/icons8-account-100.png"
+                                        alt="" class="icon"></i><span>Profile</span></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts/student_home.js"></script>
+    <script src="./scripts/profile.js"></script>
+</body>
+
+</html>

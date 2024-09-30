@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Font Awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Student DashBoard</title>
+    <link rel="stylesheet" href="./styles/student_styles.css">
+    <link rel="stylesheet" href="./styles/payment.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h2>A - Z Coding Acadamy</h2>
+    </header>
+    <div class="content">
+        <div class="main-content" id="main-content">
+
+            <div class="Contentcontainer">
+                <h2>Enrolling Courses</h2>
+                <header>
+
+                    <div class="filterEntries">
+                        <div class="entries">
+                            Show <select name="" id="table_size">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select> entries
+                        </div>
+
+                        <div class="filter">
+                            <label for="search">Search:</label>
+                            <input type="search" name="" id="search" placeholder="Course ID / Category/name">
+                        </div>
+                    </div>
+
+                </header>
+
+                <div class="scrollable-container">
+                    <div class="table-container">
+                        <table>
+
+                            <thead>
+                                <tr class="heading">
+                                    <th>Course ID</th>
+                                    <th>Course Name</th>
+                                    <th>Total Fee</th>
+                                    <th>Pending Fee</th>
+
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="courseInfo">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Popup Form-->
+
+            <div class="popup-window">
+
+                <div class="popup">
+                    <header>
+                        <h2 class="modalTitle">Course Deatails</h2>
+                        <button class="closeBtn">&times;</button>
+                    </header>
+
+                    <div class="body">
+                        <form action="#" id="myForm">
+
+                            <div class="inputFieldContainer">
+                                <div class="form_control">
+                                    <label for="courseId">Course ID:</label>
+                                    <input type="text" name="" id="courseId" required>
+                                </div>
+
+                                <div class="form_control">
+                                    <label for="courseName">Course Name:</label>
+                                    <input type="text" name="" id="courseName" required>
+                                </div>
+
+                                <div class="form_control">
+                                    <label for="category">Course category:</label>
+                                    <input type="text" name="" id="category" required>
+                                </div>
+
+                                <div class="form_control">
+                                    <label for="duration">Course duration:</label>
+                                    <input type="text" name="" id="duration" required>
+                                </div>
+
+                                <div class="form_control">
+                                    <label for="courseFee">Course Fee</label>
+                                    <input type="text" name="courseFee" id="courseFee" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Payment Window (overlay) -->
+            <div class="payment-window" id="paymentwindow">
+                <div class="paymentPopup" id="paymentpopup">
+                    <span id="closeBtn" class="closeBtn">&times;</span>
+                    <div class="modalTitle"></div>
+                    <div class="popupFooter"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <!-- Navigation Bar -->
+        <div class="sidebar">
+            <div class="container add" id="container">
+                <div class="brand">
+                    <h3>Student</h3>
+                    <a href="#" id="toggle" onclick="menuChage(this)"><i>
+                            <div class="menuicon1"></div>
+                            <div class="menuicon2"></div>
+                            <div class="menuicon3"></div>
+                        </i></a>
+                </div>
+
+                <div class="navbar">
+                    <ul>
+                        <li><a href="./student_home.html" id="home"><i><img class="icon"
+                                        src="./Assets/icons8-home-100 (1).png" alt=""></i><span>Home</span></a></li>
+                        <li><a href="./course.html" id="nav-course"><i><img class="icon"
+                                        src="./Assets/icons8-course-100.png" alt="icon"></i><span>Course</span></a>
+                        </li>
+                        <li><a href="./payment.html" id="nav-payment"><i><img src="./Assets/icons8-payment-100.png"
+                                        alt="" class="icon"></i><span>Payment</span></a></li>
+                        <li><a href="./notification.html" id="nav-notifications"><i><img
+                                        src="./Assets/icons8-bell-96.png" alt=""
+                                        class="icon"></i><span>Notification</span></a></li>
+                        <li><a href="./profile.html" id="nav-reports"><i><img src="./Assets/icons8-account-100.png"
+                                        alt="" class="icon"></i><span>Profile</span></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts/student_home.js"></script>
+    <script src="./scripts/payment.js"></script>
+</body>
+
+</html>

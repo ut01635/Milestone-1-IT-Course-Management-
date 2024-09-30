@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Font Awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Student DashBoard</title>
+    <link rel="stylesheet" href="./styles/student_styles.css">
+    <!-- <link rel="stylesheet" href="./styles/course.css"> -->
+    <style>
+        .main-content {
+            width: 80%;
+        }
+
+        .Contentcontainer {
+            margin-top: 50px;
+            width: 100%;
+            margin-left: 5%;
+            align-self: center;
+        }
+
+        .Contentcontainer header {
+
+            align-items: center;
+        }
+
+        .Contentcontainer header .filterEntries {
+            margin: 10px;
+            display: flex;
+            justify-content: end;
+        }
+
+        .Contentcontainer header .filterEntries .filter {
+            margin-left: 30px;
+        }
+
+        .Contentcontainer header .filter input,
+        .Contentcontainer header .entries select {
+            padding: 7px 10px;
+            border: 1px solid #a7a8a8;
+            color: #424242;
+            background: #fff9f9ad;
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .filter input {
+            padding-right: 10px;
+        }
+
+        .filter label,
+        .entries {
+            color: #424242;
+            margin-right: 5px;
+        }
+
+        .filter input:focus {
+            border-color: #1a1919;
+        }
+
+        .Contentcontainer header .addCourseBtn {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        header .addCourseBtn button,
+        .popup header .closeBtn,
+        .popup footer .submitBtn {
+            padding: 9px 14px;
+            color: #fff;
+            background: transparent;
+            font-size: 16px;
+            cursor: pointer;
+            pointer-events: auto;
+            outline: none;
+            border: 1px solid #424242;
+            background: rgba(104, 1, 1, 0.61);
+            border-radius: 5px;
+        }
+
+        .addCourseBtn button:hover,
+        .popup header .closeBtn:hover,
+        .popup footer .submitBtn:hover {
+            background: maroon;
+        }
+
+        .Contentcontainer table {
+            text-align: center;
+            width: 110%;
+            border-collapse: collapse;
+        }
+
+        table .heading {
+            background: rgba(206, 206, 206, 0.308);
+            color: black;
+        }
+
+        table .heading th:hover {
+            background: rgba(56, 56, 56, 0.658);
+            transition: 0.3s;
+        }
+
+        table tr th,
+        table tr td {
+            padding: 3px 10px;
+            color: rgb(39, 37, 37);
+            vertical-align: middle;
+        }
+
+        table tr th {
+            padding: 10px 10px;
+            border-right: solid 1px rgba(180, 180, 180, 0.568);
+        }
+
+        table tr:hover {
+            cursor: pointer;
+            background: rgb(150, 148, 148);
+        }
+
+        table tr td {
+            border-bottom: 1px solid #404346;
+        }
+
+        table tbody tr:first-child td {
+            border-top: 1px solid #000000;
+        }
+
+        table tbody tr:nth-child(odd) {
+            background: rgb(150, 148, 148);
+        }
+
+        table tbody tr {
+            background: #666869;
+        }
+
+        table tr td {
+            font-size: clamp(8px, 4vw, 16px);
+        }
+
+        table td button {
+            margin: 0 3px;
+            padding: 5px;
+            width: 35px;
+            background: #424549;
+            color: #dae0e7;
+            font-size: 16px;
+            cursor: pointer;
+            pointer-events: auto;
+            outline: none;
+            border: 1px solid #9c9c9c;
+        }
+
+        table tr .empty {
+            padding: 6px;
+            background: #c9c5c567;
+            text-align: center;
+        }
+
+        .icons {
+            width: 22px;
+            padding-bottom: -5px;
+        }
+
+        /* Popup Form  Style */
+        .popup-window {
+            position: fixed;
+            top: 0;
+            left: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.804);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .popup {
+            width: 20%;
+            border-radius: 5px;
+            box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(0deg, rgb(255, 255, 255) 0%, #faeceb 100%);
+            ;
+            transition: 0.5s;
+            user-select: none;
+            transform: scale(0.8);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .popup header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid black;
+            padding: 10px 10px;
+        }
+
+        .popup header .closeBtn {
+            font-size: 30px;
+            font-weight: 300;
+            padding: 0 15px;
+        }
+
+        .popup header .closeBtn:hover,
+        .popup footer .submitBtn:hover {
+            border-color: black;
+            transition: 0.3s;
+        }
+
+        .popup footer {
+            border-top: 1px solid black;
+            padding: 12px 15px;
+            text-align: right;
+        }
+
+        .popup form {
+            padding: 10px 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+
+
+        .inputFieldContainer .form_control {
+            margin: 2px 0;
+        }
+
+        .inputFieldContainer .form_control label {
+            display: block;
+            color: black;
+            margin-bottom: 2px;
+            font-size: 12px;
+            text-align: start;
+
+        }
+
+        .form_control input {
+            margin-bottom: 5px;
+            padding: 10px;
+            border: 1px solid rgb(77, 75, 75);
+            color: black;
+            background: rgba(255, 255, 255, 0.767);
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+            width: 100%;
+            height: 30px;
+        }
+
+        .form_control input:focus,
+        .form_control input:valid {
+            border-color: darkslategray;
+        }
+
+        input::-webkit-inner-spin-button,
+        input::-webkit-outer-spin-button {
+            display: none;
+        }
+
+
+        .active {
+            transform: scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+
+
+
+        /* Scrollable container style */
+        .scrollable-container {
+            max-height: 520px;
+            overflow-y: auto;
+            border: 1px solid #dddddd00;
+            padding: 10px;
+
+        }
+
+        .table-container {
+            width: 100%;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-container th,
+        .table-container td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* confirmation popup style */
+        /* Confirmation Popup Styles */
+        .confirmation-popup-window {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .confirmation-popup {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        /* .confirmation-popup.active {
+            opacity: 1;
+            visibility: visible;
+        } */
+
+        .confirmation-popup header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .confirmation-popup .closeConfirmBtn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .closeConfirmBtn:hover {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .confirmation-popup footer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .confirmation-popup button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .confirmation-popup .confirmBtn {
+            background-color: #d9534f;
+        }
+
+        .confirmation-popup .cancelBtn {
+            background-color: #5bc0de;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <h2>A - Z Coding Acadamy</h2>
+    </header>
+    <div class="content">
+        <div class="main-content" id="main-content">
+
+            <div class="Contentcontainer">
+                <h2>Enrolling Courses</h2>
+                <header>
+
+                    <div class="filterEntries">
+                        <div class="filter">
+                            <label for="search">Search:</label>
+                            <input type="search" name="" id="search" placeholder="Course ID / Category/name">
+                        </div>
+                    </div>
+
+                </header>
+
+                <div class="scrollable-container">
+                    <div class="table-container">
+                        <table>
+
+                            <thead>
+                                <tr class="heading">
+                                    <th>Course ID</th>
+                                    <th>Course Name</th>
+                                    <th>Category</th>
+                                    <th>Duration</th>
+                                    <th>Course Fee</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="courseInfo">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Popup Form-->
+
+            <div class="popup-window">
+
+                <div class="popup">
+                    <header>
+                        <h2 class="modalTitle">Course Deatails</h2>
+                        <button class="closeBtn">&times;</button>
+                    </header>
+
+                    <div class="body">
+                        <form action="#" id="myForm">
+
+                            <div class="inputFieldContainer">
+                                <div class="form_control">
+                                    <label for="courseId">Course ID:</label>
+                                    <input type="text" name="" id="courseId" required>
+                                </div>
+
+                                <div class="form_control">
+                                    <label for="courseName">Course Name:</label>
+                                    <input type="text" name="" id="courseName" required>
+                                </div>
+
+                                <div class="form_control">
+                                    <label for="category">Course category:</label>
+                                    <input type="text" name="" id="category" required>
+                                </div>
+
+                                <div class="form_control">
+                                    <label for="duration">Course duration:</label>
+                                    <input type="text" name="" id="duration" required>
+                                </div>
+
+                                <div class="form_control">
+                                    <label for="courseFee">Course Fee</label>
+                                    <input type="text" name="courseFee" id="courseFee" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Confirmation Popup -->
+        <div class="confirmation-popup-window" id="confirmationModal">
+            <div class="confirmation-popup">
+                <header>
+                    <h2>Confirmation</h2>
+                    <button class="closeConfirmBtn">&times;</button>
+                </header>
+                <div class="body">
+                    <p id="confirmationMessage">Are you sure you want to unfollow this course?</p>
+                </div>
+                <footer>
+                    <button class="confirmBtn">Confirm</button>
+                    <button class="cancelBtn">Cancel</button>
+                </footer>
+            </div>
+        </div>
+
+
+        <!-- Navigation Bar -->
+        <div class="sidebar">
+            <div class="container add" id="container">
+                <div class="brand">
+                    <h3>Student</h3>
+                    <a href="#" id="toggle" onclick="menuChage(this)"><i>
+                            <div class="menuicon1"></div>
+                            <div class="menuicon2"></div>
+                            <div class="menuicon3"></div>
+                        </i></a>
+                </div>
+
+                <div class="navbar">
+                    <ul>
+                        <li><a href="./student_home.html" id="home"><i><img class="icon"
+                                        src="./Assets/icons8-home-100 (1).png" alt=""></i><span>Home</span></a></li>
+                        <li><a href="./course.html" id="nav-course"><i><img class="icon"
+                                        src="./Assets/icons8-course-100.png" alt="icon"></i><span>Course</span></a></li>
+                        <li><a href="./payment.html" id="nav-payment"><i><img src="./Assets/icons8-payment-100.png"
+                                        alt="" class="icon"></i><span>Payment</span></a></li>
+                        <li><a href="./notification.html" id="nav-notifications"><i><img
+                                        src="./Assets/icons8-bell-96.png" alt=""
+                                        class="icon"></i><span>Notification</span></a></li>
+                        <li><a href="./profile.html" id="nav-reports"><i><img src="./Assets/icons8-account-100.png"
+                                        alt="" class="icon"></i><span>Profile</span></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script>
+        // DOM elements
+        let newStudentAddBtn = document.querySelector('.addCourseBtn'),
+            darkBg = document.querySelector('.popup-window'),
+            popupForm = document.querySelector('.popup'),
+            crossBtn = document.querySelector('.closeBtn'),
+            submitBtn = document.querySelector('.submitBtn'),
+            modalTitle = document.querySelector('.modalTitle'),
+            popupFooter = document.querySelector('.popupFooter'),
+            form = document.querySelector('form'),
+            formInputFields = document.querySelectorAll('form input'),
+            courseId = document.getElementById('courseId'),
+            courseName = document.getElementById("courseName"),
+            category = document.getElementById("category"),
+            duration = document.getElementById("duration"),
+            courseFee = document.getElementById("courseFee"),
+            entries = document.querySelector(".showEntries"),
+            tabSize = document.getElementById("table_size"),
+            courseInfo = document.querySelector(".courseInfo"),
+            table = document.querySelector("table"),
+            filterData = document.getElementById("search");
+
+        // Initialize data
+        let originalData = JSON.parse(localStorage.getItem('course')) || [];
+        let getData = [...originalData];
+        let loggedStudent = JSON.parse(sessionStorage.getItem('loggedStudent')) || null;
+
+        let isEdit = false, editId;
+
+        let arrayLength = 0;
+        let tableSize = 10;
+        let startIndex = 1;
+        let endIndex = 0;
+        let currentIndex = 1;
+        let maxIndex = 0;
+
+        // Show profile
+        loadProfile();
+
+        crossBtn.addEventListener('click', () => {
+            darkBg.classList.remove('active');
+            popupForm.classList.remove('active');
+            form.reset();
+        });
+
+        function preLoadCalculations() {
+            arrayLength = getData.length;
+            maxIndex = Math.ceil(arrayLength / tableSize);
+        }
+
+        function readInfo(CourseId, CourseName, Category, Duration, CourseFee) {
+            courseId.value = CourseId;
+            courseName.value = CourseName;
+            category.value = Category;
+            duration.value = Duration + " Months";
+            courseFee.value = CourseFee + ".00";
+
+            darkBg.classList.add('active');
+            popupForm.classList.add('active');
+            modalTitle.innerHTML = "Course Details";
+            formInputFields.forEach(input => input.disabled = true);
+        }
+
+        filterData.addEventListener("input", () => {
+            const searchTerm = filterData.value.toLowerCase().trim();
+
+            if (searchTerm !== "") {
+                getData = originalData.filter(item => {
+                    const courseName = item.courseName.toLowerCase();
+                    const courseId = item.courseId.toLowerCase();
+                    const category = item.category.toLowerCase();
+
+                    return courseName.includes(searchTerm) || courseId.includes(searchTerm) || category.includes(searchTerm);
+                });
+            } else {
+                getData = [...originalData];
+            }
+
+            currentIndex = 1;
+            startIndex = 1;
+            displayIndexBtn();
+        });
+
+        function loadProfile() {
+            if (!loggedStudent) {
+                console.error('No logged student found.');
+                return;
+            }
+
+            let Courses = JSON.parse(localStorage.getItem('followedCourse')) || [];
+            let followedCourses = Courses.filter(course => course.nicNumber === loggedStudent);
+
+            if (followedCourses.length === 0) {
+                courseInfo.innerHTML = `<tr class="courseDetails"><td class="empty" colspan="6" align="center">No data available in table</td></tr>`;
+                table.style.minWidth = "100%";
+            } else {
+                courseInfo.innerHTML = "";
+                followedCourses.forEach((course, i) => {
+                    let createElement = `<tr class="courseDetails">
+                <td>${course.courseId}</td>
+                <td>${course.courseName}</td>
+                <td>${course.category}</td>
+                <td>${course.duration + " Months"}</td>
+                <td>${course.courseFee + ".00"}</td>
+                <td>
+                    <button onclick="readInfo('${course.courseId}','${course.courseName}', '${course.category}', '${course.duration}', '${course.courseFee}')"><i class="fa-regular fa-eye"></i></button>
+                    <button onclick="unfollowCourse(${i})"><img class="icons" src="./styles/icons8-minus-96.png" alt=""></i></button>
+                </td>
+            </tr>`;
+
+                    courseInfo.innerHTML += createElement;
+                });
+                table.style.minWidth = "100%";
+            }
+        }
+
+        function unfollowCourse(index) {
+            let Courses = JSON.parse(localStorage.getItem('followedCourse')) || [];
+            let updatedCourses = Courses.filter((course, i) => i !== index || course.nicNumber !== loggedStudent);
+
+            localStorage.setItem('followedCourse', JSON.stringify(updatedCourses));
+            loadProfile();
+        }
+
+        //student main
+        //togle function & menu icon function
+        let toggle = document.getElementById("toggle");
+        let container = document.getElementById("container");
+
+        toggle.onclick = function () {
+            container.classList.toggle('active');
+            container.classList.toggle("change");
+        }
+
+        function menuChage(X) {
+            x.classList.toggle("change");
+        }
+
+    </script> -->
+    <script>
+
+    </script>
+
+
+
+    <script src="./scripts/student_home.js"></script>
+    <script src="./scripts/course.js"></script>
+</body>
+
+</html>

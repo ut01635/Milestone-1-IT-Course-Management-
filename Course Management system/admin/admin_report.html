@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin_page</title>
+    <link rel="stylesheet" href="./stylefiles/admin_styles.css">
+    <link rel="stylesheet" href="./stylefiles/report.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h2>A - Z Coding Accadamy</h2>
+    </header>
+    <div class="main">
+        <div class="main-content">
+            <div class="content" id="reportContent">
+                <div class="Contentcontainer">
+                    <h2>Student
+                         Reports</h2>
+                    <div class="controls">
+                        <select id="reportType">
+                            <option value="courseEnrollment">Course Enrollment Report</option>
+                            <option value="payment">Payment Report</option>
+                        </select>
+                        <label for="searchFilter">Search</label>
+                        <input type="text" id="searchFilter" placeholder="NIC Number / Course ID">
+                        <button id="generateReport">Generate Report</button>
+                    </div>
+
+                    <div class="scrollable-container">
+                        <div class="table-container">
+                            <div id="reportContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="container add" id="container">
+                <div class="brand">
+                    <h3>ADMIN</h3>
+                    <a href="#" id="toggle" onclick="menuChage(this)"><i>
+                            <div class="menuicon"></div>
+                            <div class="menuicon"></div>
+                            <div class="menuicon"></div>
+                        </i></a>
+                </div>
+
+                <div class="navbar">
+                    <ul>
+                        <li><a href="./admin_home.html" id="home"><i><img class="icon"
+                                        src="./Assets/icons8-home-100 (1).png" alt=""></i><span>Home</span></a></li>
+                        <li><a href="./admin.student.html" id="nav-students"><i><img class="icon"
+                                        src="./Assets/icons8-notepad-user-100.png"
+                                        alt="icon"></i><span>Students</span></a>
+                        </li>
+                        <li><a href="./admin_course.html" id="nav-courses"><i><img src="./Assets/icons8-course-100.png"
+                                        alt="" class="icon"></i><span>Course</span></a></li>
+                        <li><a href="./admin_notification.html" id="nav-notifications"><i><img
+                                        src="./Assets/icons8-bell-64.png" alt=""
+                                        class="icon"></i><span>Notification</span></a></li>
+                        <li><a href="./admin_report.html" id="nav-reports"><i><img src="./Assets/icons8-report-100.png"
+                                        alt="" class="icon"></i><span>Reports</span></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scriptFiles/admin_home.js"></script>
+    <script src="./scriptFiles/report.js"></script>
+</body>
+
+</html>
